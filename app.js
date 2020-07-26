@@ -1,6 +1,11 @@
 var content = document.getElementById("content");
 
 function addItems(){
+    var item = document.getElementById('addItem');
+
+    if (item.value == '' || item.value === ' ') {
+      alert('Enter any text here..!');
+    } else {
     var getItem = document.getElementById("addItem");
     
     var li = document.createElement('li')
@@ -37,6 +42,7 @@ function addItems(){
     content.appendChild(li)
 
     getItem.value = "";
+    }
 }
 
 
