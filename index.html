@@ -6,44 +6,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>todo app</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    </head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css"
+        href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .main {
+            width: 25em;
+            height: 32em;
+            background-color: rgb(128, 128, 128);
+            box-shadow: 3px 3px 10px 3px gray;
+        }
+        .butn
+        {
+            border: none;
+            background-color: rgb(42, 41, 41);
+            color: white;
+            border-radius: 5px;
+            padding: 0px 6px;
+            height: 2.3em;
+        }
+        .list
+        {
+            width: 23em;
+            height: 19.5em;
+            background-color: lightgray;
+            overflow: auto;
+        }
+        h3
+        {
+            color: white;
+        }
+    </style>
+</head>
 
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-2 col-md-2 col-1"></div>
-            <div class="col-lg-8 col-md-8 col-10">
-                <h3 class="mt-5 text-center">To-Do App </h3>
+    
+
+    <div class="container main mt-5">
+        <h3 class="pt-5 text-center">To-Do Application </h3>
 
 
-                <div class="input-group mb-3 mt-3">
-                    <input type="text" class="form-control" aria-label="Default"
-                        aria-describedby="inputGroup-sizing-default" id="addItem">
-                    <button type="button" class="btn btn-dark ml-2" onclick="addItems()">Add to list</button>
-                    <button type="button" class="btn btn-dark ml-2" onclick="deleteAll()">Delete All</button>
-                </div>
-            </div>
+        <div class="input-group mb-3 mt-5">
+            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"
+                id="addItem" pattern=".*/S.">
+            <button type="button" class="butn ml-1" onclick="addItems()">Add to list</button>
+            <button type="button" class="butn ml-1" onclick="deleteAll()">Delete All</button>
         </div>
-        <div class="col-lg-2 col-md-2 col-1"></div>
-    </div>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-4 col-md-3 col-2"></div>
-            <div class="col-lg-4 col-md-6 col-8">
-
-                <ul class="list-group" id="content">
-                   
-                </ul>
-               
-            </div>
+        <div class="list">
+        <table id="content" class="table">
+        </table>
         </div>
-        <div class="col-lg-4 col-md-3 col-2"></div>
+
+
     </div>
-
-
 
 
 

@@ -1,62 +1,77 @@
 var content = document.getElementById("content");
 
-function addItems(){
+function addItems() {
     var item = document.getElementById('addItem');
 
-    if (item.value == '' || item.value === ' ') {
-      alert('Enter any text here..!');
+    if (item.value.replace(/\s/g, "") == "") {
+        alert('Enter any text here..!');
     } else {
-    var getItem = document.getElementById("addItem");
-    
-    var li = document.createElement('li')
-    var liText = document.createTextNode(getItem.value)
-    li.setAttribute("class","list-group-item text-align-left ml-2 mt-2");
 
-    li.appendChild(liText)
-    
+        var getItem = document.getElementById("addItem");
 
-    //editbutton
-    var eBtn = document.createElement('button')
-    eBtn.setAttribute('class' , 'btn btn-dark float-right ml-3')
-    eBtn.setAttribute('onclick', 'editItem(this)');
-   
-    var eIcon = document.createElement('i')
-    eIcon.setAttribute('class', 'fa fa-pencil-square-o')
-    eIcon.setAttribute('aria-hidden', 'true');
-    
-    eBtn.appendChild(eIcon)
-    li.appendChild(eBtn)
+        var tr = document.createElement('tr');
 
-    //delbutton
-    var dBtn = document.createElement('button')
-    dBtn.setAttribute('class' , 'btn btn-dark float-right ml-3')
-    dBtn.setAttribute('onclick', 'delItem(this)');
-   
-    var dIcon = document.createElement('i')
-    dIcon.setAttribute('class', 'fa fa-trash');
-    dIcon.setAttribute('aria-hidden', 'true');
-    
-    dBtn.appendChild(dIcon)
-    li.appendChild(dBtn)
+        var tdItem = document.createElement('td');
+        var tdText = document.createTextNode(getItem.value)
 
-    content.appendChild(li)
+        tdItem.appendChild(tdText)
+        tr.appendChild(tdItem)
 
-    getItem.value = "";
+        //editbutton
+        var tdEdit = document.createElement('td');
+        tdEdit.setAttribute('style', 'width: 10px')
+
+        var eBtn = document.createElement('button')
+        eBtn.setAttribute('class', 'btn btn-dark')
+        eBtn.setAttribute('onclick', 'editItem(this)');
+
+        var eIcon = document.createElement('i')
+        eIcon.setAttribute('class', 'fa fa-pencil-square-o')
+        eIcon.setAttribute('aria-hidden', 'true');
+
+        eBtn.appendChild(eIcon)
+        tdEdit.appendChild(eBtn)
+        tr.appendChild(tdEdit)
+
+
+        //delbutton
+        var tdDel = document.createElement('td');
+        tdDel.setAttribute('style', 'width: 10px')
+
+        var dBtn = document.createElement('button')
+        dBtn.setAttribute('class', 'btn btn-dark')
+        dBtn.setAttribute('onclick', 'delItem(this)');
+
+        var dIcon = document.createElement('i')
+        dIcon.setAttribute('class', 'fa fa-trash');
+        dIcon.setAttribute('aria-hidden', 'true');
+
+        dBtn.appendChild(dIcon)
+        tdDel.appendChild(dBtn)
+        tr.appendChild(tdDel)
+
+        content.appendChild(tr)
+
+        getItem.value = "";
     }
 }
 
-
-function deleteAll(){
-    content.innerHTML = "";  
+function deleteAll() {
+    content.innerHTML = "";
 }
 
-function delItem(e) {
-    e.parentNode.remove();
+function delItem(delBtn) {
+    content.deleteRow(delBtn.parentNode.parentNode.rowIndex);
 }
 
-function editItem(e){
-	var val = e.parentNode.firstChild.nodeValue;
-	var editValue = prompt("Enter the value",val);
-	e.parentNode.firstChild.nodeValue = editValue;
+function editItem(editBtn) {
+    var val = editBtn.parentNode.parentNode.firstChild.innerText;
+    var newVal = prompt("Enter new value", val);
+    if (newVal.replace(/\s/g, "") == "") {
+        alert('Enter any text here..!');
+    } 
+    else {
+        editBtn.parentNode.parentNode.firstChild.innerText = newVal
+    }
 
 }
